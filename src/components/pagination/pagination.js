@@ -57,10 +57,12 @@ export default function Pagination(props) {
       setActivePage(pageNumber);
     }
   }
+  
   return (
+      
     <>
       <br />
-      <List activeList={activeList}  list={props.list} color={props.color} toDoStatus={props.toDoStatus} toggleComplete={props.toggleComplete} />
+      <List incompleted={props.incompleted}  activeList={activeList}  list={props.list} color={props.color} incomplete={props.incomplete} toDoStatus={props.toDoStatus} toggleComplete={props.toggleComplete} />
 
       <br />
 

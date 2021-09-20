@@ -10,6 +10,9 @@ import '../../app.css';
 const ToDo = () => {
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
+  const [incompleted, setIncompleted] = useState(Boolean);
+  const [color, setColor] = useState('dark');
+   console.log(' in compleated ---- > ' , incomplete);
   const { handleChange, handleSubmit } = useForm(addItem);
 
   function addItem(item) {
@@ -18,7 +21,13 @@ const ToDo = () => {
     item.complete = false;
     setList([...list, item]);
   }
-
+  
+  function Incompleted(){
+    console.log('incompleted ====== ' ,incompleted);
+    setIncompleted( incompleted ? false : true)
+    setColor(incompleted ? 'dark' : 'warning')
+     
+  }
   function deleteItem(id) {
     const items = list.filter((item) => item.id !== id);
     setList(items);
@@ -47,7 +56,7 @@ const ToDo = () => {
 
 
       <div className='form-container'>
-        <Card style={{ width: '50rem' }}>
+        <Card style={{ width: '55rem' }}>
           <Card.Body>
             <Card.Title>Add Item</Card.Title>
             <Form onSubmit={handleSubmit}>
@@ -76,13 +85,16 @@ const ToDo = () => {
               </FormGroup>
               <Button type="submit">Add Item</Button>
             </Form>
+           
           </Card.Body>
+          <Button variant={color} onClick={Incompleted}> { incompleted ? ' Tasks not completed' : 'All tasks ' } </Button>
         </Card>
+       
       </div >
 
 
 
-      <Pagination className='pagList-container' list={list} incomplete={incomplete} toggleComplete={toggleComplete}></Pagination>
+      <Pagination className='pagList-container' list={list} incompleted={incompleted} incomplete={incomplete} toggleComplete={toggleComplete}></Pagination>
     </>
   );
 };
