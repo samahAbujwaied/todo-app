@@ -8,7 +8,8 @@ function Header(props) {
         <div >
             <Navbar bg="danger" variant="light" sticky="top" style={{ height: '100px' }}>
                 <Container>
-                    <Navbar.Brand href="/" style={{ textDecoration: "none"}}><h4>📝 📝 To Do List  📝 📝</h4></Navbar.Brand>
+                    <Navbar.Brand href="/" style={{ textDecoration: "none"}}><h4>📝 📝 To Do List  📝 📝</h4
+                    ></Navbar.Brand>
                     <Nav className="me-auto">
                         
                         <Nav.Link variant="contained" color="secondary"
