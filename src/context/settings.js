@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
 
-export const settingContext = React.createContext();
+export const SettingsContext = React.createContext();
+import React, { useState, useEffect } from "react";
 
 function settingsContext(props) {
   const [elementsPerPage, setElementsPerPage] = useState(2);
@@ -39,13 +39,16 @@ function settingsContext(props) {
     setElementsPerPage,
     holdValues,
     itemsPerPage: 2,
+    sortCat: 'hardest',
+    showCompleted: true,
   };
 
+
   return (
-    <settingContext.Provider value={state}>
-      {props.children}
-    </settingContext.Provider>
-  );
+    <SettingsContext.Provider value={state}>
+        {props.children}
+    </SettingsContext.Provider>
+)
 }
 
 export default settingsContext;
