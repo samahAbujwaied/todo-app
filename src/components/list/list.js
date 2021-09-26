@@ -27,7 +27,6 @@ export default function Settings(props) {
 
                 </div>
             )) :
-            props.incomplete.length>0 ?
             props.incomplete.map((item) => (
                 <div className='cardsContainer'>
                     <Card interactive={true} elevation={Elevation.TWO} key={item.id} className='card' style={{ width: '80rem', height: '230px' }}  >
@@ -45,15 +44,16 @@ export default function Settings(props) {
 
 
                 </div>
-            )) :
-            <div className='cardsContainer'>
-            <Card interactive={true} elevation={Elevation.TWO}  className='card' style={{ width: '80rem', height: '100px' }}  >
-            <h2>No tasks </h2>
-            </Card>
-            <br />
+            )) 
+        //     :
+        //     <div className='cardsContainer'>
+        //     <Card interactive={true} elevation={Elevation.TWO}  className='card' style={{ width: '80rem', height: '100px' }}  >
+        //     <h2>No tasks </h2>
+        //     </Card>
+        //     <br />
 
 
-        </div>
+        // </div>
             
             }
             
