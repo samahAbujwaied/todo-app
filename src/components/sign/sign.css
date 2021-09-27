@@ -1,0 +1,15 @@
+body{
+  background-image: url('https://maxwel.com/wp-content/themes/maxwel/images/sign-bg-01.svg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 1400px;
+
+}
+.Login{
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+ 
+}
