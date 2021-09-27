@@ -19,9 +19,14 @@ const ToDo = () => {
 
   function addItem(item) {
     console.log(item);
-    item._id = uuid();
-    item.complete = false;
-    setList([...list, item]);
+    let data = {
+      id: uuid(),
+      complete: false,
+      difficulty: item.difficulty,
+      assignee: item.assign,
+      text: item.item,
+    };
+    setList([...list, data]);
   }
 
   function Incompleted() {
@@ -96,6 +101,7 @@ const ToDo = () => {
                 </Card.Body>
                 <Button variant={color} onClick={Incompleted}> {incompleted ? ' Tasks not completed' : 'All tasks '} </Button>
               </Card>
+              <Pagination deleteIte={deleteItem} className='pagList-container' list={list} incompleted={incompleted} incomplete={incomplete} toggleComplete={toggleComplete}></Pagination>
             </Container>
           </Route>
           <Route path="/settings">
@@ -104,7 +110,7 @@ const ToDo = () => {
         </Switch>
       </Router>
     </div >
-       <Pagination className='pagList-container' list={list} incompleted={incompleted} incomplete={incomplete} toggleComplete={toggleComplete}></Pagination>
+      
     </>
   );
 };

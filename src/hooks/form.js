@@ -1,19 +1,27 @@
 import { useState } from 'react';
-
+import superagent from "superagent";
+import cookie from "react-cookies";
 const useForm = (callback) => {
 
   const [values, setValues] = useState({});
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     if (event) event.preventDefault();
+    
+    const token = cookie.load("token");
+    await superagent.post("https://ibrahem-todo-server.herokuapp.com/todo")
+    .set('authorization', `Bearer ${token}`)
+    .send(values);
     callback(values);
   };
 
   const handleChange = (event) => {
     event.persist();
-    setValues(values => ({ ...values, [event.target.name]: event.target.value }));
+    setValues((values) => ({
+      ...values,
+      [event.target.name]: event.target.value,
+    }));
   };
-
   return {
     handleChange,
     handleSubmit,
@@ -22,3 +30,5 @@ const useForm = (callback) => {
 };
 
 export default useForm;
+
+
