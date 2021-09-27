@@ -11,7 +11,6 @@ export default function Pagination(props) {
   const [numberOfPages, setNumberOfPages] = useState(Math.ceil(chosenList.length / settings.itemsPerPage));
   const [activePage, setActivePage] = useState(1);
   const [buttonsArray, setButtonsArray] = useState(btnArr);
-
   useEffect(() => {
     setChosenList(settings.showCompleted ? props.list : props.incomplete);
     setActiveList(chosenList);
@@ -46,7 +45,6 @@ export default function Pagination(props) {
     }
   }, [activeList]);
 
-
   function handlePages(pageNumber) {
 
     if (pageNumber == 'Prev' && buttonsArray.includes(activePage - 1)) {
@@ -57,16 +55,15 @@ export default function Pagination(props) {
       setActivePage(pageNumber);
     }
   }
-  
   return (
       
     <>
       <br />
-      <List incompleted={props.incompleted}  list={props.list} color={props.color} incomplete={props.incomplete} toDoStatus={props.toDoStatus} toggleComplete={props.toggleComplete} />
+      <List incompleted={props.incompleted}  activeList={activeList}  list={props.list} color={props.color} incomplete={props.incomplete} toDoStatus={props.toDoStatus} toggleComplete={props.toggleComplete} />
+
       <br />
 
-      {buttonsArray &&
-        buttonsArray.map((item) => (
+      {buttonsArray && buttonsArray.map((item) => (
           <>
             <Button onClick={() => handlePages(item)} className='pagination-buttons'>
               {item}
